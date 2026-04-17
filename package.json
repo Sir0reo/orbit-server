@@ -1,0 +1,12 @@
+{
+  "name": "orbit-duel",
+  "version": "1.0.0",
+  "description": "Orbit Duel local and online arena game",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  }
+}
