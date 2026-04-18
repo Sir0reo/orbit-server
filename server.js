@@ -155,6 +155,12 @@ io.on('connection', (socket) => {
         });
     });
 
+    socket.on('online-state', ({ roomCode, state }) => {
+        const room = rooms.get(roomCode);
+        if (!room || room.hostSocketId !== socket.id) return;
+        socket.to(roomCode).emit('online-state', { state });
+    });
+
     socket.on('online-return-menu', ({ roomCode }) => {
         const room = rooms.get(roomCode);
         if (!room || !room.players[socket.id]) return;
