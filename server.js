@@ -155,10 +155,10 @@ io.on('connection', (socket) => {
         });
     });
 
-    socket.on('online-state', ({ roomCode, state }) => {
+    socket.on('online-state', ({ roomCode, state, sequence = 0 }) => {
         const room = rooms.get(roomCode);
         if (!room || room.hostSocketId !== socket.id) return;
-        socket.to(roomCode).emit('online-state', { state });
+        socket.to(roomCode).emit('online-state', { state, sequence });
     });
 
     socket.on('online-return-menu', ({ roomCode }) => {
